@@ -1,4 +1,7 @@
-// APPROACH 2: Recursive method...
+Reverse a Linked List
+
+
+// APPROACH 2: Recursive method...  TC->O(N)  SC->O(N)
 class Solution
 {
     public:
@@ -29,9 +32,10 @@ class Solution
     
 };
 
-//************************************************************************
+//*******************************************************************************************************************
     
-// // APPROACH 1: Iterative method...
+// // APPROACH 1: Iterative method...    TC->O(N)  SC->O(1)
+
 // class Solution
 // {
 //     public:
