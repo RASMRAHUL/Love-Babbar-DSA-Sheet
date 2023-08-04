@@ -1,0 +1,38 @@
+Remove loop in Linked List
+
+
+
+class Solution {
+public:
+    void removeLoop(Node* head) {
+        Node* slow = head;
+        Node* fast = head;
+        while (fast != NULL && fast->next != NULL) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast) {
+                break; // Loop detected
+            }
+        }
+
+        if (fast == NULL || fast->next == NULL) {
+            return; // No loop detected
+        }
+
+        Node* ptr1 = head;
+        Node* ptr2 = slow; // This pointer is used for deleting the loop
+
+        while (ptr2 != ptr1) { // Traverse loop until you reach the common node
+            ptr1 = ptr1->next;
+            ptr2 = ptr2->next;
+            
+            
+        }
+       Node* startingPoint = ptr1;   // common point of loop 
+       
+       while(startingPoint->next != ptr1)   // detect again loop one step before the common point
+            startingPoint = startingPoint->next;
+        
+        startingPoint->next = NULL;
+    }
+};
