@@ -1,0 +1,46 @@
+Reverse a Linked List in groups of given size
+
+// TS -> O(N)  SC -> O(1)
+
+class Solution
+{
+    public:
+    int getLength(struct node* head)
+    {
+        int count = 0;
+       
+        while(head)
+        {
+            count++;
+            head = head->next;
+        }
+        
+        return count;
+        
+    }
+    struct node *reverse (struct node *head, int k)
+    { 
+       if(head == NULL )
+            return head;
+        
+        struct node* current = head;
+        struct node* prev = NULL;
+        struct node* nxt = NULL;
+        int count = 0;
+        
+        while(current != NULL && count < k)
+        {
+            nxt = current->next;
+            current->next = prev;
+            prev = current;
+            current = nxt;
+            count++;
+            
+        }
+        
+        if(nxt != NULL)
+            head->next = reverse(nxt, k);
+            
+        return prev;
+    }
+};
