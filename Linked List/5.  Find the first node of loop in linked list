@@ -1,0 +1,35 @@
+Find the first node of loop in linked list
+
+
+class Solution
+{
+    public:
+    
+    int findFirstNode(Node* head)
+    {
+       Node* slow = head;
+        Node* fast = head;
+        while (fast != NULL && fast->next != NULL) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast) {
+                break; // Loop detected
+            }
+        }
+
+        if (fast == NULL || fast->next == NULL) {
+            return -1; // No loop detected
+        }
+        
+        Node* ptr1 = head;
+        Node* ptr2 = slow; // This pointer is used for deleting the loop
+
+        while (ptr2 != ptr1) { // Traverse loop until you reach the common node
+            ptr1 = ptr1->next;
+            ptr2 = ptr2->next;
+            
+        }
+        
+        return ptr1->data;
+    }
+};
