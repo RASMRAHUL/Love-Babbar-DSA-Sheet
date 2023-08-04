@@ -1,0 +1,20 @@
+Remove duplicate element from sorted Linked List
+
+Node *removeDuplicates(Node *head)
+{
+    Node* temp = head;
+    while(temp != NULL && temp->next != NULL)
+    {
+        if(temp->data == temp->next->data)
+        {
+            Node* t = temp->next;
+            temp->next = t->next;
+            delete t;
+            
+        }
+        else
+            temp = temp->next;
+    }
+    
+    return head;
+}
